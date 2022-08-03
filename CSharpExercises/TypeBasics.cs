@@ -1,4 +1,7 @@
-﻿using System.Text;
+﻿
+global using static System.Console;
+using System.Text;
+using x = System.Xml.XmlAttribute;
 
 namespace CSharpExercises
 {
@@ -6,11 +9,13 @@ namespace CSharpExercises
 	{
 		public static void RunExamples()
 		{
-			Console.WriteLine(Int32.MinValue);
-			Console.WriteLine(Int32.MaxValue);
+			//x attr = new x();
 
-			Console.WriteLine(long.MinValue);
-			Console.WriteLine(long.MaxValue);
+			WriteLine(Int32.MinValue);
+			WriteLine(Int32.MaxValue);
+
+			WriteLine(long.MinValue);
+			WriteLine(long.MaxValue);
 
 			//Predefined numeric types
 			// Unsigned - byte(Byte), ushort(UInt16), uint(UInt32)(0 to 2^32 - 1), ulong(UInt64)
@@ -23,22 +28,22 @@ namespace CSharpExercises
 			p1.X = 1;
 
 			var p2 = p1;
-			Console.WriteLine(p2.X);
+			WriteLine(p2.X);
 
 			p2.X = 2;
-			Console.WriteLine(p2.X);
-			Console.WriteLine(p1.X);
+			WriteLine(p2.X);
+			WriteLine(p1.X);
 
-			Console.WriteLine("----------------------");
+			WriteLine("----------------------");
 			var p1Ref = new PointRef();
 			p1Ref.X = 1;
 
 			var p2Ref = p1Ref;
-			Console.WriteLine(p2Ref.X);
+			WriteLine(p2Ref.X);
 
 			p2Ref.X = 2;
-			Console.WriteLine(p2Ref.X);
-			Console.WriteLine(p2Ref.X);
+			WriteLine(p2Ref.X);
+			WriteLine(p2Ref.X);
 
 			//Predefined types in C# alias .NET types in the System namespace
 			int i1 = 32;
@@ -47,10 +52,10 @@ namespace CSharpExercises
 			// Insert _ to make more readable
 			int million = 1_000_000;
 			var b = 0b1010_1011_1100_1101_1110_1111;
-			Console.WriteLine(b);
+			WriteLine(b);
 
 			double million1 = 1E06;
-			Console.WriteLine(million1);
+			WriteLine(million1);
 
 			float f = 4.5F; // Will not compile without F as it will be inferred as double
 			decimal d = -1.23M;     // Will not compile without the M suffix.
@@ -61,13 +66,13 @@ namespace CSharpExercises
 			{
 				int a10 = int.MinValue;
 				//a--;
-				Console.WriteLine(a10 == int.MaxValue); // True
+				WriteLine(a10 == int.MaxValue); // True
 			}
 
 			unchecked {
 				int a12 = int.MinValue;
 				a12--;
-				Console.WriteLine(a12 == int.MaxValue); // True
+				WriteLine(a12 == int.MaxValue); // True
 			}
 
 			int y = unchecked(int.MaxValue + 1);
@@ -75,20 +80,20 @@ namespace CSharpExercises
 			// string is a reference type rather than a value type. Its equality operators, however, follow value-type semantics:
 			string a1 = "test";
 			string b1 = "test";
-			Console.Write(a1 == b1);  // True
+			Write(a1 == b1);  // True
 
 			string a2 = "\\\\server\\fileshare\\helloworld.cs";
-			Console.WriteLine(a2);
+			WriteLine(a2);
 			string a3 = @"\\server\fileshare\helloworld.cs";
-			Console.WriteLine(a3);
+			WriteLine(a3);
 
 			string verbatim = @"First Line
 Second Line";
-			Console.WriteLine(verbatim);
+			WriteLine(verbatim);
 
 			//You can include the double-quote character in a verbatim literal by writing it twice:
 			string xml = @"<customer id=""123""></customer>";
-			Console.WriteLine(xml);
+			WriteLine(xml);
 
 			string s = "a" + 5;  // a5
 
@@ -96,7 +101,7 @@ Second Line";
 															 // Evaluates to "255 in hex is FF"
 
 			bool b2 = true;
-			Console.WriteLine($"The answer in binary is {(b2 ? 1 : 0)}");
+			WriteLine($"The answer in binary is {(b2 ? 1 : 0)}");
 
 			//Interpolated strings must complete on a single line, unless you also specify the verbatim string operator:
 
@@ -163,35 +168,35 @@ Second Line";
 			// Implicit typing can be taken one stage further with arrays: you can omit the type qualifier after the new keyword and have the compiler infer the array type:
 			var vowels2 = new[] { 'a', 'e', 'i', 'o', 'u' };   // Compiler infers char[]
 			//Split("Abhilash G Raja", out string x1, out _);// _ is a discard
-			//Console.WriteLine(x1);
+			//WriteLine(x1);
 
 			//For backward compatibility, this language feature will not take effect if a real underscore variable is in scope:
 			string _;
 			Split("Stevie Ray Vaughan", out string x2, out _);
-			Console.WriteLine(_);     // Vaughan
+			WriteLine(_);     // Vaughan
 
 			//An in parameter is similar to a ref parameter except that the argument’s value cannot be modified by the method (doing so generates a compile-time error)
 			int[] ints = { 1, 2, 3, 4 };
 			ref int ref2 = ref ints[2];
-			Console.WriteLine(ints[2]);
+			WriteLine(ints[2]);
 			ref2++;
-			Console.WriteLine(ints[2]);
+			WriteLine(ints[2]);
 
 			ref var ref3 = ref GetRandomStringValue();
-			Console.WriteLine(randomStringValue);
+			WriteLine(randomStringValue);
 			ref3 = "Not so random";
-			Console.WriteLine(randomStringValue);
+			WriteLine(randomStringValue);
 
 			var ref4 = GetRandomStringValueReadOnly();
 			ref4 = "dfdf";
-			Console.WriteLine(randomStringValue);
+			WriteLine(randomStringValue);
 			MyMethod(new("Hello"));//Target typed new Expressions
 
 			string foo = null;
 			char? c = foo?[1];  // c is null
 			GuessTheType(true);
 			GuessTheType("Hello");
-			Console.WriteLine(GuessTheCard(13));
+			WriteLine(GuessTheCard(13));
 
 		}
 		static void MyMethod(StringBuilder str)
@@ -211,10 +216,10 @@ Second Line";
 			switch(x)
 			{
 				case bool b when true:
-					Console.WriteLine($"Is a bool with value {b}");
+					WriteLine($"Is a bool with value {b}");
 					break;
 				default:
-					Console.WriteLine("Unknown");
+					WriteLine("Unknown");
 					break;
 			}
 		}
