@@ -7,6 +7,8 @@ namespace CSharpExercises
 {
 	internal class TypeBasics
 	{
+		const string Message = "Hello World";
+
 		public static void RunExamples()
 		{
 			//x attr = new x();

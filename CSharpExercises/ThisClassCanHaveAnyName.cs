@@ -4,8 +4,9 @@
 	{
 		static void Main(string[] args)
 		{
-			TypeBasics.RunExamples();
-			Console.ReadKey();
+			//TypeBasics.RunExamples();
+			CreatingTypes.RunExamples();
+			ReadKey();
 		}
 	}
 }
